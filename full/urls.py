@@ -21,6 +21,7 @@ from django.urls import path
 from app.views import product_detail
 from django.conf import settings
 from django.conf.urls.static import static
+from app.views import add_to_cart, cart_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,8 +32,8 @@ urlpatterns = [
     path('checkout/', views.checkout, name='checkout'),
     path('contact/', views.contact, name='contact'),
     path('product/<int:product_id>/', product_detail, name='product_detail'),
-    path('cart/<int:product_id>/', views.cart, name='cart'),
-    path('cart/add/<int:product_id>/', views.cart_add, name='cart_add'),
-    path('cart/remove/<int:product_id>/', views.cart_remove, name='cart_remove'),
+    path('cart/', cart_view, name='cart_view'), 
+    path('add-to-cart/<int:product_id>/', add_to_cart, name='add_to_cart'),
+  
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
